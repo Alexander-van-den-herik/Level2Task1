@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import nl.herika.level2task1.data.Place
-import nl.herika.level2task1.databinding.ActivityMainBinding
 import nl.herika.level2task1.databinding.ItemPlaceBinding
+
 
 class PlaceAdapter (private val places: List<Place>) : RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
 
@@ -21,16 +21,16 @@ class PlaceAdapter (private val places: List<Place>) : RecyclerView.Adapter<Plac
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(places[position])
+        holder.databind(places[position])
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)  {
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         val binding = ItemPlaceBinding.bind(itemView)
 
-        fun bind(place : Place) {
-            binding.itemPlaceImage.setImageResource(place.imageResId)
+        fun databind(place: Place) {
             binding.itemPlaceText.text = place.name
+            binding.itemPlaceImage.setImageResource(place.imageResId)
         }
     }
 }
